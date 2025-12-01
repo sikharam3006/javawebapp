@@ -30,7 +30,7 @@ jobs:
           languages: ${{matrix.language}}
           source-root: MyWebApp
       - name: install maven
-        working-directory: MyWebApp
+        working-directory: javawebapp/MyWebApp
         run: mvn clean install 
        
       - name: codeql analysis
