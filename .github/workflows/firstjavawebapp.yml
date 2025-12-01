@@ -17,6 +17,8 @@ jobs:
              distribution: 'adopt'
       - name: install maven
         run: mvn clean install -f MyWebApp/pom.xml
+      - name: run tests
+        run: mvn -B test
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
