@@ -19,7 +19,7 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: java
-          source-root: javawebapp/MyWebApp
+          source-root: MyWebApp
       - name: install maven
         run: mvn clean install -f MyWebApp/pom.xml
       - name: codeql analysis
