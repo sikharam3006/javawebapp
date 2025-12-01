@@ -32,7 +32,7 @@ jobs:
           name: java-app
       - name: deplopy to webapp
         id: deploy-to-webapp
-        uses: actions/azure-webapp@v2
+        uses: azure/webapps-deploy@v2
         with:
           app-name: Myfirstjava
           slot-name: 'Production'
