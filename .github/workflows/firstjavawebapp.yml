@@ -28,7 +28,6 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: ${{matrix.language}}
-          source-root: MyWebApp
       - name: install maven
         working-directory: javawebapp/MyWebApp
         run: mvn clean install 
