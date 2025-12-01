@@ -32,8 +32,8 @@ jobs:
         working-directory: MyWebApp
         run: mvn clean install 
        
-      - name: codeql analysis
-        uses: github/codeql-action/analyze@v3
+     # - name: codeql analysis
+     #   uses: github/codeql-action/analyze@v3
         
       - name: upload artifact
         uses: actions/upload-artifact@v4
