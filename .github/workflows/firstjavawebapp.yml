@@ -22,8 +22,10 @@ jobs:
           source-root: MyWebApp
       - name: install maven
         run: mvn clean install -f MyWebApp/pom.xml
+        working-directory: MyWebApp
       - name: codeql analysis
         uses: github/codeql-action/analyze@v3
+        
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
