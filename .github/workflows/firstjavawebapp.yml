@@ -21,7 +21,7 @@ jobs:
           languages: java
           source-root: MyWebApp
       - name: install maven
-        run: mvn clean install -f MyWebApp/pom.xml
+        run: mvn clean install 
         working-directory: MyWebApp
       - name: codeql analysis
         uses: github/codeql-action/analyze@v3
