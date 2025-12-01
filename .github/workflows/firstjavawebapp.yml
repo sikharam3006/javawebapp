@@ -20,6 +20,7 @@ jobs:
           name: java-app
           path: '${{github.workspace}}'
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: download artifact
