@@ -22,7 +22,7 @@ jobs:
       - name: install maven
         run: mvn clean install -f MyWebApp/pom.xml
       - name: codeql analysis
-        uses: github/codeqa-action/analyze@v3
+        uses: github/codeql-action/analyze@v3
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
