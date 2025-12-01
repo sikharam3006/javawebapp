@@ -15,9 +15,9 @@ jobs:
       - name: install maven
         run: mvn clean install -f MyWebApp/pom.xml
       - name: upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: java-app
-          path: '${{github-workspace}}'
+          path: '${{github.workspace}}'
            
   
