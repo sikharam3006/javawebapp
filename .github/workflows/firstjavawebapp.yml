@@ -20,7 +20,7 @@ jobs:
         with:
           languages: java
       - name: install maven
-        run: mvn clean install -f MyWebApp/pom.xml
+        run: mvn -B package -f MyWebApp/pom.xml
       - name: codeql analysis
         uses: github/codeql-action/analyze@v3
       - name: upload artifact
