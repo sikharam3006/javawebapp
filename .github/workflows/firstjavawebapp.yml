@@ -19,5 +19,13 @@ jobs:
         with:
           name: java-app
           path: '${{github.workspace}}'
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: download artifact
+        uses: actions/download-articat@v4
+        with:
+          name: java-app
+    
            
   
