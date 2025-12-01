@@ -13,6 +13,6 @@ jobs:
              java-version: '11'
              distribution: 'adopt'
       - name: install maven
-        run: mv clean install -f MyWebApp/pom.xml
+        run: mvn clean install -f MyWebApp/pom.xml
            
   
