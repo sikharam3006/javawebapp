@@ -15,8 +15,8 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
       - name: build the code
-        run: mvn clean package -f MyWebApp/pom.xml|
-              ls target/
+        run: mvn clean package -f MyWebApp/pom.xml
+              
       - name: az login
         uses: azure/login@v1
         with:
