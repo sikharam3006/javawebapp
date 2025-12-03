@@ -15,5 +15,5 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
       - name: build the code
-        run: mvn clean install -f pom.xml
+        run: mvn clean install -f MyWebApp/pom.xml
       
