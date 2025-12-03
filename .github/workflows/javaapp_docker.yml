@@ -16,7 +16,8 @@ jobs:
           distribution: 'temurin'
       - name: build the code
         run: mvn clean package -f MyWebApp/pom.xml
-              
+      - name: check jar file
+        run: ls target/
       - name: az login
         uses: azure/login@v1
         with:
