@@ -24,6 +24,6 @@ jobs:
         run: az acr login --name ${{secrets.ACR_NAME}}
       - name: build and push image
         run: |
-          IMAGE_NAMEE=${{secrets.ACR_NAME}}.azurecr.io/java:${{github.sha}}
+          IMAGE_NAME=${{secrets.ACR_NAME}}.azurecr.io/java:${{github.sha}}
           docker build -t $IMAGE_NAME .
           docker push $IMAGE_NAME
