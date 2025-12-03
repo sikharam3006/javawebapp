@@ -31,3 +31,12 @@ jobs:
           IMAGE_NAME=${{secrets.ACR_NAME}}.azurecr.io/java:${{github.sha}}
           docker build -t $IMAGE_NAME .
           docker push $IMAGE_NAME
+  deploy:
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+        - name: deploy to webapp
+          uses: azure/webapps-deploy@v2
+          with:
+            app-name: ${{secrets.AZURE_WEBAPP_NAME}}
+            images: ${{secrets.ACR_NAME}}.azurecr.io/java:${{github.sha}}
