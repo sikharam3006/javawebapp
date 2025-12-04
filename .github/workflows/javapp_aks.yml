@@ -1,0 +1,27 @@
+name: build and deploy to AKS
+on:
+  push:
+    branches: main
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: java setup
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: build the code
+        run: mvn clean package -f /MyWebApp/pom.xml
+      - name: azure login
+        uses: azure/login@v3
+        with:
+          creds: ${{secrets.AZURE_CREDENTIALS}}
+      - name: ACR login
+        run: az acr login --name ${{secrets.ACR_NAME}}
+        
+        
+        
