@@ -31,7 +31,7 @@ jobs:
           IMAGE_NAME=${{secrets.ACR_NAME}}.azurecr.io/java:${{github.sha}}
           docker build -t $IMAGE_NAME .
           docker push $IMAGE_NAME
-      - name: deploy to azure webapp
+      - name: deploy to webapp
         uses: azure/webapps-deploy@v2
         with:
             app-name: ${{secrets.AZURE_WEBAPP_NAME}}
