@@ -24,7 +24,7 @@ jobs:
         run: az acr login --name ${{secrets.ACR_NAME}}
       - name: build and push to ACR
         run: |
-          IMAGE_NAME=${{secrets.ACR_NAME}}.azurecr.io/java-web-app:${{github.sha}}
+          IMAGE_NAME=${{secrets.ACR_NAME}}.azurecr.io/java:${{github.sha}}
           docker build -t $IMAGE_NAME .
       - name: set up kubectl
         uses: azure/setup-kubectl@v3
@@ -35,7 +35,7 @@ jobs:
           az aks get-credentials --resource-group ${{secrets.AKS_RESOURCE_GROUP}} --name ${{secrets.AKS_CLUSTER_NAME}}
       - name: update image in manifest
         run: |
-          sed -i "s|IMAGE_PLACEHOLDER|${{secrets.ACR_NAME}}.azurecr.io/java-webapp:${{github.sha}}|g" k8/deployment.yml
+          sed -i "s|IMAGE_PLACEHOLDER|${{secrets.ACR_NAME}}.azurecr.io/java:${{github.sha}}|g" k8/deployment.yml
       - name: Apply kubernetes manifests
         run: kubectl apply -f k8/
         
