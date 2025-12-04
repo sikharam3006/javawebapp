@@ -37,7 +37,7 @@ jobs:
         run: |
           sed -i "s|IMAGE_PLACEHOLDER|${{secrets.ACR_NAME}}.azurecr.io/java-webapp:${{github.sha}}|g" k8/deployment.yml
       - name: Apply kubernetes manifests
-        run: kubectl apply -f k8s/
+        run: kubectl apply -f k8/
         
         
         
