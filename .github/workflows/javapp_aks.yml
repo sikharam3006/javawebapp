@@ -22,6 +22,12 @@ jobs:
           creds: ${{secrets.AZURE_CREDENTIALS}}
       - name: ACR login
         run: az acr login --name ${{secrets.ACR_NAME}}
+      - name: build and push to ACR
+        run: |
+          IMAGE_NAME=${{secrets.ACR_NAME}}.azurecr.io/java-web-app:${{github.sha}}
+          docker build -t $IMAGE_NAME
+          docker push $IMAGE_NAME
+          echo "Imaged pushed $IMAGE_NAME"
         
         
         
