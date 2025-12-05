@@ -30,7 +30,7 @@ jobs:
         uses: azure/setup-kubectl@v3
         with:
           version: 'latest'
-      - name: get aks credentials.
+      - name: get aks credentials
         run: |
           az aks get-credentials --resource-group ${{secrets.AKS_RESOURCE_GROUP}} --name ${{secrets.AKS_CLUSTER_NAME}}
       - name: update image in manifest
