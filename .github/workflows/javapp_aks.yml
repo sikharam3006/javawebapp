@@ -1,0 +1,43 @@
+name: build and deploy to AKS
+on:
+  push:
+    branches: main
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: java setup
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: build the code
+        run: mvn clean package -f MyWebApp/pom.xml 
+      - name: azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{secrets.AZURE_CREDENTIALS}}
+      - name: ACR login
+        run: az acr login --name ${{secrets.ACR_NAME}}
+      - name: build and push to ACR.
+        run: |
+          IMAGE_NAME=${{secrets.ACR_NAME}}.azurecr.io/java:${{github.sha}}
+          docker build -t $IMAGE_NAME .
+      - name: set up kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'latest'
+      - name: get aks credentials
+        run: |
+          az aks get-credentials --resource-group ${{secrets.AKS_RESOURCE_GROUP}} --name ${{secrets.AKS_CLUSTER_NAME}}
+      - name: update image in manifest
+        run: |
+          sed -i "s|IMAGE_PLACEHOLDER|${{secrets.ACR_NAME}}.azurecr.io/java:${{github.sha}}|g" k8/deployment.yml
+      - name: Apply kubernetes manifests
+        run: kubectl apply -f k8/
+        
+        
+        
