@@ -1,4 +1,4 @@
-name: Java CI/CD with Terraform (Azure)
+name: Java CI/CD with Terraform(Azure)
 on:
   push:
     branches: [ "main" ]
