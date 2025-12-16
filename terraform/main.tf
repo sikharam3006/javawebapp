@@ -26,8 +26,8 @@ service_plan_id = azurerm_service_plan.plan.id
 site_config {
 application_stack {
 java_version = "17"
-java_server = "JAVA"
-java_server_version = "17"
+java_server         = "TOMCAT"
+java_server_version = "9.0
 }
 }
 }
