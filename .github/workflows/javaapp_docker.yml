@@ -1,4 +1,4 @@
-name: build and deploy to WebApp container
+name: build and deploy to webApp container
 on:
   push:
     branches: main
