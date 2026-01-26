@@ -24,7 +24,7 @@ resource "azurerm_linux_web_app" "app" {
 
   site_config {
     application_stack {
-      java_version        = "17"
+      java_version        = "11"
       java_server         = "TOMCAT"
       java_server_version = "9.0"
     }
